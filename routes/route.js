@@ -29,7 +29,9 @@ router.get('/users/:id', async(req,res)=>{
     try{
         const user=await User.findById(_id)
         if(!user){
-            return res.status(404).send()
+            return res.status(404).send({
+                message:"User Not Found"
+            })
         }
         res.status(200).send(user)
     }catch(error){
